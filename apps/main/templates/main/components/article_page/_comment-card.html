@@ -1,0 +1,18 @@
+<div class="card">
+  <div class="card-header d-flex align-items-center justify-content-between">
+    {{ comment.created_at }}
+    {% if request.user.is_superuser %}
+    <a href="" class="text-decoration-none">❌</a>
+    {% endif %}
+  </div>
+  <div class="card-body">
+    <figure>
+      <blockquote class="blockquote">
+        <p>{{ comment.text }}</p>
+      </blockquote>
+      <figcaption class="blockquote-footer">
+       {{ comment.author }}
+      </figcaption>
+    </figure>
+  </div>
+</div>

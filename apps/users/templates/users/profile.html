@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ author.username|title}}
+{% endblock %}
+
+{% block content %}
+<div class="row row-gap-3 my-5">
+    <div class="col-12">
+        <ul class="list-group list-group-action">
+            <li class="list-group-item list-group-item-action"><b>Username: </b>{{ author.username }}</li>
+            <li class="list-group-item list-group-item-action"><b>Email: </b>{{ author.email }}</li>
+            <li class="list-group-item list-group-item-action"><b>Registered at: </b>{{ author.date_joined }}</li>
+            <li class="list-group-item list-group-item-action"><b>Total articles: </b>{{ author.article_set.count }}</li>
+            <li class="list-group-item list-group-item-action"><b>Total likes: </b>{{ total_likes }}</li>
+            <li class="list-group-item list-group-item-action"><b>Total dislikes: </b>{{ total_dislikes }}</li>
+            <li class="list-group-item list-group-item-action"><b>Total comments: </b>{{ total_comments }}</li>
+            <li class="list-group-item list-group-item-action"><b>Total views: </b>{{ total_views }}</li>
+        </ul>
+    </div>
+    <div class="col-12">
+        <div class="row mt-4 row-gap-4">
+         {% for article in author.article_set.all %}
+         <div class="col-3">{% include 'components/_card.html' %}</div>
+         {% endfor %}
+            </div>
+    </div>
+</div>
+{% endblock %}

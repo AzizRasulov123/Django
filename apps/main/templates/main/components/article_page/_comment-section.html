@@ -1,0 +1,17 @@
+<div class="row row-gap-3 mb-4">
+    {% for comment in article.comment_set.all %}
+    <div class="col-4">{% include './_comment-card.html' %}</div>
+    {% endfor %}
+</div>
+
+{% if request.user.is_authenticated %}
+<form action="" method="post">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+    <button class="btn btn-dark mt-3">Отправить</button>
+</form>
+{% else %}
+<p>Только авторизованные пользователи могут оставлять комментарии...</p>
+<a href="{% url 'login-page' %}">Войти в аккаунт.</a>
+{% endif %}

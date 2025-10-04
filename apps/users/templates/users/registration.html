@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Регистрация
+{% endblock %}
+
+{% block content %}
+<form action="" class="my-5" method="post">
+    {% csrf_token %}
+    <h2 class="text-center">Cоздание аккаунта</h2>
+
+    {{ form.as_p }}
+
+    <button class="btn btn-primary" type="submit">Создать</button>
+</form>
+{% endblock %}

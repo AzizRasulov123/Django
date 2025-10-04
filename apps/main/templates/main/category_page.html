@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+Категория: {{ category }}
+{% endblock %}
+
+{% block content %}
+<div class="row my-4">
+    <div class="col-2">
+        {% include './components/category_page/_sort-menu.html' %}
+    </div>
+    <div class="col-10">
+        <div class="row row-gap-4 mb-4">
+            {% for article in articles  %}
+            <div class="col-4">{% include 'components/_card.html' %}</div>
+             {% endfor %}
+        </div>
+
+        {% include 'components/_pagination.html'  %}
+    </div>
+</div>
+
+
+{% endblock %}

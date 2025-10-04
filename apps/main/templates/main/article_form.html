@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ prefix }} статью
+{% endblock %}
+
+{% block content %}
+<form action="" class="my-5" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h2 class="text-center">{{ prefix }} статью</h2>
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-dark">{{ prefix }} статью</button>
+</form>
+{% endblock %}

@@ -1,0 +1,13 @@
+<ul class="list-group list-group-action">
+    {% for key, value in sorting_fields.items %}
+    <li class="list-group-item list-group-item-action">
+        {% if request.GET.sort == value.0 %}
+        <a href="?sort={{value.1}}">{{ key }}</a>
+        {% else %}
+        <a href="?sort={{value.0}}">{{ key }}</a>
+        {% endif %}
+
+    </li>
+    {% endfor %}
+
+</ul>

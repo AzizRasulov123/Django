@@ -1,0 +1,32 @@
+<div class="card" >
+  {% if article.preview %}
+  <img src="{{ article.preview.url }}" class="card-img-top" alt="..." style="height: 350px">
+  {% else %}
+  <img src="https://www.лос39.рф/wp-content/uploads/2024/12/skoro-zdes-budet-foto.jpg" class="card-img-top" alt="..." style="height: 350px">
+  {% endif %}
+
+
+  <div class="card-body">
+    <h5 class="card-title">{{ article.title }}</h5>
+    <p class="card-text">{{ article.short_description }}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      <b>Просмотры: </b>{{ article.views }}
+    </li>
+    <li class="list-group-item">
+      <b>Категория: </b>{{ article.category }}
+    </li>
+    <li class="list-group-item">
+      <b>Автор: </b><a href="{% url 'profile' article.author.username %}">{{ article.author }}</a>
+    </li>
+    <li class="list-group-item">
+      <b>Добавлено: </b>
+      <br>
+      {{ article.created_at }}
+    </li>
+  </ul>
+  <div class="card-body">
+    <a href="{% url 'details-page' article.pk %}" class="card-link">Подробнее</a>
+  </div>
+</div>

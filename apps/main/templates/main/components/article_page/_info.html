@@ -1,0 +1,45 @@
+<h2 class="text-center mb-3">{{ article.title }}</h2>
+ <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      <b>Просмотры: </b>{{ article.views }}
+    </li>
+    <li class="list-group-item">
+      <b>Категория: </b>{{ article.category }}
+    </li>
+    <li class="list-group-item">
+      <b>Автор: </b>{{ article.author }}
+    </li>
+    <li class="list-group-item">
+      <b>Добавлено: </b>
+      {{ article.created_at }}
+    </li>
+ <li class="list-group-item">
+      <b>Кол-во комментариев: </b>
+     {{ article.comment_set.all.count }}
+
+    </li>
+ <li class="list-group-item">
+      <b>Кол-во лайков: </b>
+     {{ article.likes.user.all.count }}
+
+    </li>
+ <li class="list-group-item">
+      <b>Кол-во дизлайков: </b>
+     {{ article.dislikes.user.all.count }}
+
+    </li>
+  </ul>
+
+{% if request.user == article.author %}
+<div class="d-flex column-gap-2">
+    <a href="{% url 'details-update' article.pk %}" class="btn btn-warning">Редактировать</a>
+    <a href="{% url 'details-delete' article.pk %}" class="btn btn-danger">Удалить</a>
+</div>
+{% endif %}
+
+{% if request.user.is_authenticated and request.user != article.author  %}
+<div class="d-flex column-gap-2">
+    <a href="{% url 'vote' article.id 'add_like' %}" class="btn btn-success">Лайк</a>
+    <a href="{% url 'vote' article.id 'add_dislike' %}" class="btn btn-danger">Дизлайк</a>
+</div>
+{% endif %}

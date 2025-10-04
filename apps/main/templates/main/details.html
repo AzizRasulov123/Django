@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Статья: {{ article.title }}
+{% endblock %}
+
+{% block content %}
+<div class="row my-4">
+    <div class="col-6">{% include './components/article_page/_slider.html' %}</div>
+    <div class="col-6">{% include './components/article_page/_info.html' %}</div>
+</div>
+
+
+<div class="mb-4">
+    <h2 class="text-center">Полное описание</h2>
+    <p><i>{{ article.full_description }}</i></p>
+</div>
+
+
+<div class="mb-4">
+   {% include './components/article_page/_comment-section.html' %}
+</div>
+{% endblock %}
